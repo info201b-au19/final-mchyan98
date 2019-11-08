@@ -2,7 +2,7 @@
 *Derrick Sin, Jin Lin, Micheal Chyan & Sydney Lee*
 
 ## Focus
-#### Music
+### Music
 *We chose this topic because music has become an integral part of people's daily lives and we are interested in the types of music people are listening to these days as well how it may affect them.*
 
 ### Previous Projects
