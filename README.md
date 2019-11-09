@@ -15,7 +15,10 @@
  *This project took a dive into looking at the overall music consumption habits of the average person.*
  *It took look at which devices were more popular between different age groups, which platform (e.g youtube, pandora, spotify) was used more often, and other music comparative information.*
 
-- **FILL IN HERE**
+- [Music Psychology](https://journals.sagepub.com/doi/pdf/10.1177/0956797618759465)
+
+ *This psychology investigates what makes certain songs more popular than others. It specifically focuses on unique lyrics within a certain genre of music
+
 
 ### Possible Questions
 - What types of music are people interested in, in different regions (e.g countries, states, cities)?
