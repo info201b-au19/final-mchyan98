@@ -38,7 +38,7 @@
 - 16 Columns
 - **Questions**
  - What types of music are people interested in, in different regions (e.g countries, states, cities)?
-  - What do top songs have in common?
+ - What do top songs have in common?
 
 #### [Category Winners](https://www.kaggle.com/eliasdabbas/american_music_awards_tweets#categories_winners.csv)
 
