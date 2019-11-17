@@ -19,6 +19,7 @@ source("scripts/summary_info_table.R")
 source("scripts/summary_info.R")
 ```
 
+!!!WILL CONVERT INTO PARAGRAPH FORM!!!
 2019 top 50 summary info
 ```{r echo=FALSE}
 top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
