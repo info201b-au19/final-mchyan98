@@ -7,11 +7,11 @@ date: "11/15/2019"
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
-library("dplyr")
+library(dplyr)
 library(plotly)
-library("ggplot2")
+library(ggplot2)
 library(stringr)
-library("tidyr")
+library(tidyr)
 source("scripts/chart1.R")
 source("scripts/chart2.R")
 source("scripts/chart3.R")
@@ -21,9 +21,15 @@ source("scripts/summary_info.R")
 
 !!!WILL CONVERT INTO PARAGRAPH FORM!!!
 2019 top 50 summary info
-```{r echo=FALSE}
+```{r echo=F}
 top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 get_summary_info(top50)
+```
+
+2019 top 50 summary chart
+```{r echo=F}
+top50 <- read.csv("data/top50.csv", fileEncoding="latin1", encoding="UTF-8", stringsAsFactors = FALSE)
+aggregate_summary(top50)
 ```
 
 chart 1 file: 
