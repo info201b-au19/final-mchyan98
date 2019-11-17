@@ -19,6 +19,11 @@ source("scripts/summary_info_table.R")
 source("scripts/summary_info.R")
 ```
 
+2019 top 50 summary info
+```{r echo=FALSE}
+top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+get_summary_info(top50)
+```
 
 chart 1 file: 
 this chart shows top 50 spotify songs by genre
