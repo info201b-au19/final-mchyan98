@@ -12,6 +12,7 @@ library(plotly)
 library("ggplot2")
 library(stringr)
 library("tidyr")
+library(ggpubr)
 source("scripts/chart1.R")
 source("scripts/chart2.R")
 source("scripts/chart3.R")
@@ -22,10 +23,16 @@ source("scripts/summary_info.R")
 
 chart 1 file: 
 this chart shows top 50 spotify songs by genre
-```{r test, echo=FALSE, message=FALSE, warning=FALSE}
+```{r genre chart, echo=FALSE, message=FALSE, warning=FALSE}
 top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 genre_table <- genre_counts(top50)
 genre_chart <- most_popular_genre(genre_table)
 `genre_chart`
 ```
 
+
+chart 2 file:
+```{r popularity chart, echo=FALSE, message=FALSE, warning=FALSE}
+summary_plot <- four_plots(top50)
+`summary_plot`
+```
