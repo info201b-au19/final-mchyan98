@@ -16,6 +16,7 @@ library(ggpubr)
 source("scripts/chart1.R")
 source("scripts/chart2.R")
 source("scripts/chart3.R")
+source("scripts/chart4.R")
 source("scripts/summary_info_table.R")
 source("scripts/summary_info.R")
 top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
@@ -30,7 +31,6 @@ get_summary_info(top50)
 
 ## Chart 1 file: 
 this chart shows top 50 spotify songs by genre
-<<<<<<< HEAD
 ```{r genre chart, echo=FALSE, message=FALSE, warning=FALSE}
 genre_table <- genre_counts(top50)
 genre_chart <- most_popular_genre(genre_table)
@@ -44,7 +44,13 @@ summary_plot <- four_plots(top50)
 ```
 
 ## Chart 3:
-this chart shows popularity's relationship with beats per minute
+This chart shows the average BPM for the top 50 songs
 ```{r chart 3, echo=FALSE, message=FALSE,}
-popularity_off_bpm(top50)
+BPM_summ(top50)
+```
+
+## Chart 4
+This chart investigates whether or not sad songs are usually slower
+```{r chart 4, echo=FALSE, message=FALSE,}
+slow_is_sad(top50)
 ```
