@@ -2,7 +2,15 @@
 # Dataset Top 50 Spotify Song - 2019
 
 # questions: Does the popularity of a song related to
-# its dancibility, length, valence, and energy
+# its dancibility, length, valence, and energy?
+# From the resulted chart, we can see there is no obvious correlation
+# between popularity and valence, energy, length, and dancebility.
+# However, there is a kind of relation between popularity and dancebility:
+# the songs with high popularity tend to have high dancebility. As we can
+# see from the plot, the points on the rang from dancebility(60-80) are
+# very densed. In regard to the relation between popularity and length of
+# the songs, most of the songs with high popularity are between 150 seconds
+# and 225 seconds.
 
 
 popularity_valence <- function(df) {
