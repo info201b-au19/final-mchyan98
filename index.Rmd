@@ -1,6 +1,6 @@
 ---
 title: "Data analysis"
-author: "Derrick Sin, Jin Lin, Micheal Chyan & Sydney Lee"
+author: "Derrick Sin, Jin Lin, Michael Chyan & Sydney Lee"
 date: "11/15/2019"
 ---
 
@@ -20,18 +20,26 @@ source("scripts/summary_info.R")
 ```
 
 !!!WILL CONVERT INTO PARAGRAPH FORM!!!
-2019 top 50 summary info
+
+## 2019 top 50 summary info
 ```{r echo=FALSE}
 top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 get_summary_info(top50)
 ```
 
-chart 1 file: 
+## chart 1 file: 
 this chart shows top 50 spotify songs by genre
-```{r test, echo=FALSE, message=FALSE, warning=FALSE}
+```{r chart 1, echo=FALSE, message=FALSE, warning=FALSE}
 top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 genre_table <- genre_counts(top50)
 genre_chart <- most_popular_genre(genre_table)
 `genre_chart`
 ```
 
+
+## Chart 3:
+this chart shows popularity's relationship with beats per minute
+```{r chart 3, echo=FALSE, message=FALSE,}
+top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+popularity_off_bpm(top50)
+```
