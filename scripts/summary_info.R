@@ -1,6 +1,3 @@
-library(dplyr)
-library(tidyr)
-
 # Summary INFO
 # Returns a list containing
 # Number of Songs

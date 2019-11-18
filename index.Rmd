@@ -1,6 +1,6 @@
 ---
 title: "Data analysis"
-author: "Derrick Sin, Jin Lin, Micheal Chyan & Sydney Lee"
+author: "Derrick Sin, Jin Lin, Michael Chyan & Sydney Lee"
 date: "11/15/2019"
 ---
 
@@ -12,11 +12,14 @@ library(plotly)
 library(ggplot2)
 library(stringr)
 library(tidyr)
+library(ggpubr)
 source("scripts/chart1.R")
 source("scripts/chart2.R")
 source("scripts/chart3.R")
+source("scripts/chart4.R")
 source("scripts/summary_info_table.R")
 source("scripts/summary_info.R")
+top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 ```
 
 !!!WILL CONVERT INTO PARAGRAPH FORM!!!
@@ -33,11 +36,34 @@ aggregate_summary(top50)
 ```
 
 chart 1 file: 
+
+## 2019 top 50 summary info
+```{r echo=FALSE}
+get_summary_info(top50)
+```
+
+## Chart 1 file: 
 this chart shows top 50 spotify songs by genre
-```{r test, echo=FALSE, message=FALSE, warning=FALSE}
-top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+```{r genre chart, echo=FALSE, message=FALSE, warning=FALSE}
 genre_table <- genre_counts(top50)
 genre_chart <- most_popular_genre(genre_table)
 `genre_chart`
 ```
 
+## Chart 2 file:
+```{r popularity chart, echo=FALSE, message=FALSE, warning=FALSE}
+summary_plot <- four_plots(top50)
+`summary_plot`
+```
+
+## Chart 3:
+This chart shows the average BPM for the top 50 songs
+```{r chart 3, echo=FALSE, message=FALSE,}
+BPM_summ(top50)
+```
+
+## Chart 4
+This chart investigates whether or not sad songs are usually slower
+```{r chart 4, echo=FALSE, message=FALSE,}
+slow_is_sad(top50)
+```
