@@ -1,7 +1,7 @@
 # chart 3
 # Dataset Top 50 Spotify Song - 2019
 
-# question: which genre of music do people like best?
+# question: Does Beats per minute contribute to popularity?
 # 
 
 library(ggplot2)
@@ -18,3 +18,4 @@ popularity_off_bpm <- function(df){
     y = "Popularity"
   )
 }
+

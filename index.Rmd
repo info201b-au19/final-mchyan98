@@ -12,34 +12,39 @@ library(plotly)
 library("ggplot2")
 library(stringr)
 library("tidyr")
+library(ggpubr)
 source("scripts/chart1.R")
 source("scripts/chart2.R")
 source("scripts/chart3.R")
 source("scripts/summary_info_table.R")
 source("scripts/summary_info.R")
+top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 ```
 
 !!!WILL CONVERT INTO PARAGRAPH FORM!!!
 
 ## 2019 top 50 summary info
 ```{r echo=FALSE}
-top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 get_summary_info(top50)
 ```
 
-## chart 1 file: 
+## Chart 1 file: 
 this chart shows top 50 spotify songs by genre
-```{r chart 1, echo=FALSE, message=FALSE, warning=FALSE}
-top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+<<<<<<< HEAD
+```{r genre chart, echo=FALSE, message=FALSE, warning=FALSE}
 genre_table <- genre_counts(top50)
 genre_chart <- most_popular_genre(genre_table)
 `genre_chart`
 ```
 
+## Chart 2 file:
+```{r popularity chart, echo=FALSE, message=FALSE, warning=FALSE}
+summary_plot <- four_plots(top50)
+`summary_plot`
+```
 
 ## Chart 3:
 this chart shows popularity's relationship with beats per minute
 ```{r chart 3, echo=FALSE, message=FALSE,}
-top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 popularity_off_bpm(top50)
 ```

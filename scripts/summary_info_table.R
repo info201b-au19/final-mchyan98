@@ -9,4 +9,3 @@
 
 # You must also describe why you included the table, and what information it reveals.
 
-four <- 4
