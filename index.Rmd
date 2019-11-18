@@ -49,14 +49,14 @@ summary_plot <- four_plots(top50)
 ```
 
 ## Chart 3:
-Average BPM in 2019' Top 50
+Average BPM in 2019's Top 50 songs
 
-```{r chart 3, echo=FALSE, message=FALSE,}
+```{r chart 3, echo=FALSE, message=FALSE, warning=FALSE}
 BPM_summ(top50)
 ```
 
 ## Chart 4
 This chart investigates whether or not sad songs are usually slower
-```{r chart 4, echo=FALSE, message=FALSE,}
+```{r chart 4, echo=FALSE, message=FALSE, warning=FALSE}
 slow_is_sad(top50)
 ```
