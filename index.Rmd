@@ -77,7 +77,7 @@ BPM_summ(top50)
 ## Chart 4
 Relation between slow songs and sad songs in 2019's Top 50 songs.
 
-This chart investigates whether or not sad songs are usually slower by comparing the beats per minute of songs vs. the valence. Valence, for clarity, describes the spectrum of emotions in music, from sad emotions to happy emotions. The higher the value, the more positive mood for the song. As we can see from the chart, the pattern varies. As the BPM increases amongst the Top 50 songs, the valence stays in a a mid-range of about 40-60. This shows that whether the BPM increases or decreases doesn't necessarily dictate the valence of the song. For example, the valence of the song was around 55 when the BPM was around 85 but also when the BPM was around 175. There is no clear cause and effect relationship shown here.
+This smoothed line graph investigates whether or not sad songs are usually slower by comparing the beats per minute of songs vs. the valence. Valence, for clarity, describes the spectrum of emotions in music, from sad emotions to happy emotions. The higher the value, the more positive mood for the song. As we can see from the chart, the pattern varies. As the BPM increases amongst the Top 50 songs, the valence stays in a a mid-range of about 40-60. This shows that whether the BPM increases or decreases doesn't necessarily dictate the valence of the song. For example, the valence of the song was around 55 when the BPM was around 85 but also when the BPM was around 175. There is no clear cause and effect relationship shown here.
 
 ```{r chart 4, echo=FALSE, message=FALSE, warning=FALSE}
 slow_is_sad(top50)
