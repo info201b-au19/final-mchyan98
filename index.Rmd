@@ -7,6 +7,8 @@ INTRO:
 For our project, we used the top50.csv data set, which shows the Top 50 most listened to songs on Spotify. The data takes into account 13 different variables about the songs (such as genre, year, beats per minute, etc.), and the variables were all extracted from Spotify's Organize Your Music function. This data was last updated on August 8, 2019, and the #1 song as of that date was Senorita by Shawn Mendes. Music is a big part of people's daily lives and we chose to analyze this dataset because we are interested in how it changes people's lives. We are also interested in if there is a relationship between people’s interest, nationality, habits, etc. and the type of songs they like to listen. Other than that, it is intriguing to learn about why certain songs are more popular than others and how certain platforms create playlists based on the data they have.
 
 
+The summary information below summarizes the information from the data frame. It lists each category such as the number of songs, genres, artists, minimum popularity, and average length of song.
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
@@ -29,15 +31,23 @@ top50 <- read.csv("data/top50.csv",
 summary_info <- get_summary_info(top50)
 ```
 
+SUMMARY:
 In this dataset, we analyzed the top `r summary_info$num_of_songs` songs of 2019. Out of the 50 songs determined to be in the top `r summary_info$num_of_songs`, there were `r length(summary_info$genres)` genres and `r length(summary_info$artists)` different artists. The songs on this list needed at least a value of `r summary_info$min_popularity` to be considered for a top `r summary_info$num_of_songs` spot and on average the songs were `r format(round(summary_info$average_length / 60, 2), nsmall = 2) ` minutes long.
 
+
+## Summary Info Table file:
 2019' Top 50 Summmary Chart
+
+This chart was intended to show the relationship between the artist and the number of songs they hold in Spotify's Top 50 list. On the left column it lists the artists and on the right column it lists the number of top songs they hold. It is also listed in order of most top songs to least top songs, and if multiple artista hold the same number of top songs, then it is listed in alphabetical order by their first name. For example, Ed Sheeran holds the most top songs in the Top 50, which would also make sense to this data since he had just released a new album this summer. He holds 4 top songs: Beautiful People, I Don't Care, AntiSocial, and Cross Me. Ariana Grande, Billie Eilish, J Balvin, Lil Nas X, Mashmello, Post Malone, Sech, Shawn Mendes, and The Chainsmokers all hold 2 songs in the Top 50 list. The rest of the list is other artists who each hold one song in the Top 50 list.
+
 ```{r echo=F}
 aggregate_summary(top50)
 ```
 
 ## Chart 1 file: 
 % of Genre in 2019' Top 50
+
+This pie chart was intended to show the relationship between the genre of music and which ones people listen to the most. We chose to show this information in the form of a pie chart because it can show proportional representations and easily shows by size and color which genre is most popular among Spotify listeners. As you can see in the chart, represented by the blue pie, is that dance pop is the most listened to genre (at 16% compared to the other genres) amongst the top 50 songs listened to on Spotify as of August 2019. Next comes pop music at 14% and latin music at 10%. The rest of the genres all share 6%, 4%, or 2% compared to the other genres and are not comparable in popularity compared to the first few mentioned genres. However, from looking at this chart, you can see that there are many different categories that could arguably be put into one, such as pop, dance pop, and australian pop.
 
 ```{r genre chart, echo=FALSE, message=FALSE, warning=FALSE}
 genre_table <- genre_counts(top50)
@@ -46,6 +56,10 @@ genre_chart <- most_popular_genre(genre_table)
 ```
 
 ## Chart 2 file:
+Relation Between Popularity and Valence, Energy, Length, and Danceability
+
+These scatterplots with the best fit line through it show the relationship between popularity and valence, popularity and energy, popularity and length, and popularity and danceability. All of the trends seem to be pretty scattered and they don't show an obvious pattern from the getco. Popularity vs. energy, vs. length, and vs. danceability show an almost horizontal line with a slight negative trend, showing that as the y-axis increases, the popularity decreases. So the more energy, the longer the length of the song, and the more danceable a song is, it has the trend of being less popular. However, since the data is so scattered, it is difficult to make this statement boldly. As for valence, it shows that as valence decreases, the popularity of the songs increase. This is the most obvious trend of the four plots in this chart. 
+
 ```{r popularity chart, echo=FALSE, message=FALSE, warning=FALSE}
 summary_plot <- four_plots(top50)
 `summary_plot`
@@ -54,12 +68,17 @@ summary_plot <- four_plots(top50)
 ## Chart 3:
 Average BPM in 2019's Top 50 songs
 
+This box and whiskers plot intends to show the relationship between the beats per minute (BPM) of a song to its popularity. This type of chart is used to show the distribution of the data. The middle line shows the median of the data, and according to the chart, the median BPM of the songs in the Top 50 chart are around 106 BPM. The 25th percentile mark is just below 100 BPM and the 75th percentile mark is at around 137.5 BPM. As you can see from the distribution, more "slow" songs have similar tempos vs. the "faster" songs have a larger variety of tempos, such as some faster songs are at an andante or moderato tempo, which are considered a walking pace or moderate pace, and some faster songs are at an allegro or presto tempo, which are fast or very fast. This data is skewed towards a higher BMP. 
+
 ```{r chart 3, echo=FALSE, message=FALSE, warning=FALSE}
 BPM_summ(top50)
 ```
 
 ## Chart 4
-This chart investigates whether or not sad songs are usually slower
+Relation between slow songs and sad songs in 2019's Top 50 songs.
+
+This chart investigates whether or not sad songs are usually slower by comparing the beats per minute of songs vs. the valence. Valence, for clarity, describes the spectrum of emotions in music, from sad emotions to happy emotions. The higher the value, the more positive mood for the song. As we can see from the chart, the pattern varies. As the BPM increases amongst the Top 50 songs, the valence stays in a a mid-range of about 40-60. This shows that whether the BPM increases or decreases doesn't necessarily dictate the valence of the song. For example, the valence of the song was around 55 when the BPM was around 85 but also when the BPM was around 175. There is no clear cause and effect relationship shown here.
+
 ```{r chart 4, echo=FALSE, message=FALSE, warning=FALSE}
 slow_is_sad(top50)
 ```
