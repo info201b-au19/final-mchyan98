@@ -3,6 +3,9 @@ title: "Data analysis"
 author: "Derrick Sin, Jin Lin, Michael Chyan & Sydney Lee"
 date: "11/15/2019"
 ---
+INTRO:
+For our project, we used the top50.csv data set, which shows the Top 50 most listened to songs on Spotify. The data takes into account 13 different variables about the songs (such as genre, year, beats per minute, etc.), and the variables were all extracted from Spotify's Organize Your Music function. This data was last updated on August 8, 2019, and the #1 song as of that date was Senorita by Shawn Mendes. Music is a big part of people's daily lives and we chose to analyze this dataset because we are interested in how it changes people's lives. We are also interested in if there is a relationship between people’s interest, nationality, habits, etc. and the type of songs they like to listen. Other than that, it is intriguing to learn about why certain songs are more popular than others and how certain platforms create playlists based on the data they have.
+
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
