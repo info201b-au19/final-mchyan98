@@ -1,43 +1,62 @@
 ---
 title: "Data analysis"
-author: "Derrick Sin, Jin Lin, Micheal Chyan & Sydney Lee"
+author: "Derrick Sin, Jin Lin, Michael Chyan & Sydney Lee"
 date: "11/15/2019"
 ---
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(knitr)
-library("dplyr")
+library(dplyr)
 library(plotly)
-library("ggplot2")
+library(ggplot2)
 library(stringr)
-library("tidyr")
+library(tidyr)
 library(ggpubr)
 source("scripts/chart1.R")
 source("scripts/chart2.R")
 source("scripts/chart3.R")
+source("scripts/chart4.R")
 source("scripts/summary_info_table.R")
 source("scripts/summary_info.R")
-top50 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+top50 <- read.csv("data/top50.csv",
+                  fileEncoding="latin1",
+                  encoding="UTF-8",
+                  stringsAsFactors = FALSE)
+summary_info <- get_summary_info(top50)
 ```
 
-!!!WILL CONVERT INTO PARAGRAPH FORM!!!
-2019 top 50 summary info
-```{r echo=FALSE}
-get_summary_info(top50)
+In this dataset, we analyzed the top `r summary_info$num_of_songs` songs of 2019. Out of the 50 songs determined to be in the top `r summary_info$num_of_songs`, there were `r length(summary_info$genres)` genres and `r length(summary_info$artists)` different artists. The songs on this list needed at least a value of `r summary_info$min_popularity` to be considered for a top `r summary_info$num_of_songs` spot and on average the songs were `r format(round(summary_info$average_length / 60, 2), nsmall = 2) ` minutes long.
+
+2019' Top 50 Summmary Chart
+```{r echo=F}
+aggregate_summary(top50)
 ```
 
-chart 1 file: 
-this chart shows top 50 spotify songs by genre
+## Chart 1 file: 
+% of Genre in 2019' Top 50
+
 ```{r genre chart, echo=FALSE, message=FALSE, warning=FALSE}
 genre_table <- genre_counts(top50)
 genre_chart <- most_popular_genre(genre_table)
 `genre_chart`
 ```
 
-
-chart 2 file:
+## Chart 2 file:
 ```{r popularity chart, echo=FALSE, message=FALSE, warning=FALSE}
 summary_plot <- four_plots(top50)
 `summary_plot`
+```
+
+## Chart 3:
+Average BPM in 2019's Top 50 songs
+
+```{r chart 3, echo=FALSE, message=FALSE, warning=FALSE}
+BPM_summ(top50)
+```
+
+## Chart 4
+This chart investigates whether or not sad songs are usually slower
+```{r chart 4, echo=FALSE, message=FALSE, warning=FALSE}
+slow_is_sad(top50)
 ```

@@ -38,7 +38,7 @@ popularity_danceability <- function(df) {
 }
 
 four_plots <- function(df) {
-  figure <- ggarrange(popularity_valence(df), popularity_valence(df), 
+  figure <- ggarrange(popularity_valence(df), popularity_energy(df), 
                  popularity_length(df), popularity_danceability(df),
                  ncol = 2, nrow = 2)
   annotate_figure(figure, 

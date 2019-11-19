@@ -1,11 +1,18 @@
-# contain a function that takes in a dataset as a parameter, and returns a table
-# of aggregate information about it. It must perform a groupby operation to show
-# a dimension of the dataset as grouped by a particular feature (column). 
-# We expect the included table to:
-  
-# Have well formatted column names
-# Only contain relevant information
-# Be intentionally sorted in a meaningful way
+library(dplyr)
+library(knitr)
 
-# You must also describe why you included the table, and what information it reveals.
+# Aggregated Table Showing Artists w/ # of Top 50 Songs
+
+aggregate_summary <- function(df)
+{
+  top_songs_by_artists <- df %>% 
+    group_by(Artist.Name) %>% 
+    tally(sort = TRUE)
+
+  top_table <- kable(top_songs_by_artists, col.names = c("Artists", "Top Songs"),
+        caption = "Based on the table we can see only 10 artists had more than 1 song in the top 50 chart.")
+  return(top_table)
+}
+
+
 
