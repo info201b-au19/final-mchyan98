@@ -2,7 +2,7 @@
 # Dataset Top 50 Spotify Song - 2019
 
 # question: which genre of music do people like best?
-# I used pie chart here because it can show proportional representaions
+# I used pie chart here because it can show proportional representations
 
 genre_counts <- function(df) {
   df %>% 
