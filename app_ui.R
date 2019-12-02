@@ -1,7 +1,9 @@
 # app_ui
 
 introduction <- tabPanel("Project Overview",
-                         h1("Introduction")
+                         h1("Project Overview"),
+                         h2("Top 50 Spotify Data"),
+                         h3("...")
   # what question are we answering?
   # add some images
 )
@@ -9,7 +11,7 @@ introduction <- tabPanel("Project Overview",
 # map1: explore the relationship between different factors of 
 # a song. For example, is there any relationship between danceability
 # and energe of the songs.
-map1 <- tabPanel("Popularity of a song",
+map1 <- tabPanel("Popularity of a Song",
                  sidebarLayout(
                    sidebarPanel(
                      selectInput("xaxis",
@@ -43,7 +45,7 @@ map2 <- tabPanel("Singer Battle",
                  ))
 
 ui <- navbarPage(
-  "App titile",
+  "App Title",
   introduction,
   map1,
   map2
