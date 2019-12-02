@@ -6,16 +6,22 @@ introduction <- tabPanel("Project title",
   # add some images
 )
 
-# map1: relationship between popularity and different factors, such as
-# dancibility, valence, energy. Want to find is there any relationship
-# between popularity of a song and these factors. 
+# map1: explore the relationship between different factors of 
+# a song. For example, is there any relationship between danceability
+# and energe of the songs.
 map1 <- tabPanel("Popularity of a song",
                  sidebarLayout(
                    sidebarPanel(
-                     selectInput("Factor",
-                                 "Please select a factor",
+                     selectInput("xaxis",
+                                 "Please select the factor of x-axis",
                                  choices = c("Danceability", "Valence",
-                                             "Energy"))
+                                             "Energy", "Popularity",
+                                             "Liveness", "Acousticness")),
+                     selectInput("yaxis",
+                                 "Please select the factor of y-axis",
+                                 choices = c("Danceability", "Valence",
+                                             "Energy", "Popularity",
+                                             "Liveness", "Acousticness"))
                    ),
                    mainPanel(
                      plotlyOutput(outputId = "popularityPlot")
