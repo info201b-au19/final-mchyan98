@@ -44,10 +44,16 @@ map2 <- tabPanel("Singer Battle",
                    )
                  ))
 
+takeaways <- tabPanel("Takeaways",
+                         h1("3 Major Takeaways"),
+                         h3("...")
+)
+
 ui <- navbarPage(
   "App Title",
   introduction,
   map1,
-  map2
+  map2,
   # map3
+  takeaways
 )
