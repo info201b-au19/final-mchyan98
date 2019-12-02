@@ -29,10 +29,23 @@ map1 <- tabPanel("Popularity of a song",
                  )
 )
 
+map2 <- tabPanel("Singer Battle",
+                 sidebarLayout(
+                   sidebarPanel(
+                     textInput(inputId = "singer1",
+                               label = "Please enter singer one:"),
+                     textInput(inputId = "singer2",
+                               label = "Please enter singer two:")
+                   ),
+                   mainPanel(
+                     plotlyOutput(outputId = "singerBattle")
+                   )
+                 ))
+
 ui <- navbarPage(
   "App titile",
   introduction,
-  map1
-  # map2,
+  map1,
+  map2
   # map3
 )

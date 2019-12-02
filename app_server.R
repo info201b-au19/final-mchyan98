@@ -1,6 +1,5 @@
 # Load dataset
 top2019 <- read.csv("data/top50.csv")
-songData <- read.csv("data/song_data")
 
 server <- function(inputs, outputs) {
   # map1 output
@@ -33,5 +32,22 @@ server <- function(inputs, outputs) {
                           title = x_factor),
              yaxis = list(zeroline = FALSE,
                           title = y_factor))
+  })
+  
+  # map2 output
+  outputs$singerBattle <- renderPlotly({
+    singerName1 <- inputs$singer1
+    singerName2 <- inputs$singer2
+    labels <- c(singerName1, singerName2)
+    colors <- list(singerName1 = "red", singerName2 = "lightgreen")
+    dataEdit <- top2019 %>% 
+      filter(Artist.Name == singerName1 | Artist.Name == singerName2)
+    p <- plot_ly(data = dataEdit,
+                 x = ~Popularity,
+                 y = ~Track.Name,
+                 name = "singer",
+                 type = "bar",
+                 orientation = "h") %>% 
+      layout(yaxis = list(title = "Track Name"))
   })
 }
