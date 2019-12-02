@@ -1,6 +1,6 @@
 # app_ui
 
-introduction <- tabPanel("Project title",
+introduction <- tabPanel("Project Overview",
                          h1("Introduction")
   # what question are we answering?
   # add some images
