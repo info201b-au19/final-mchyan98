@@ -8,22 +8,10 @@ introduction <- tabPanel("Project Overview",
   # add some images
 )
 
-<<<<<<< HEAD
 # map1: explore what factors affect the popularity of a song
 # factors include: dancibility, valence, energy, liveness,
 # Acousticness
-map1 <- tabPanel("Popularity of a song",
-||||||| merged common ancestors
-# map1: explore the relationship between different factors of 
-# a song. For example, is there any relationship between danceability
-# and energe of the songs.
-map1 <- tabPanel("Popularity of a song",
-=======
-# map1: explore the relationship between different factors of 
-# a song. For example, is there any relationship between danceability
-# and energe of the songs.
 map1 <- tabPanel("Popularity of a Song",
->>>>>>> 411195a6576d96788a6d5da2fdf7a4e738c9999c
                  sidebarLayout(
                    sidebarPanel(
                      tags$div(class = "commet", checked = NA,
