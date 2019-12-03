@@ -6,22 +6,39 @@ introduction <- tabPanel("Project title",
   # add some images
 )
 
-# map1: explore the relationship between different factors of 
-# a song. For example, is there any relationship between danceability
-# and energe of the songs.
+# map1: explore what factors affect the popularity of a song
+# factors include: dancibility, valence, energy, liveness,
+# Acousticness
 map1 <- tabPanel("Popularity of a song",
                  sidebarLayout(
                    sidebarPanel(
-                     selectInput("xaxis",
-                                 "Please select the factor of x-axis",
-                                 choices = c("Danceability", "Valence",
-                                             "Energy", "Popularity",
-                                             "Liveness", "Acousticness")),
+                     tags$div(class = "commet", checked = NA,
+                              tags$p("This chart intends to find out how
+                                     different factors will affect the 
+                                     popularity of a song. The users can
+                                     select factors from danceability, 
+                                     valence, energy, liveness, 
+                                     acousticness."),
+                              tags$br(),
+                              tags$li("Popularity: The higher the value the 
+                                      more popular the song is."),
+                              tags$li("Danceability: The higher the value, the
+                                      easier it is to dance to this song."),
+                              tags$li("Valence: The higher the value, 
+                                      the more positive mood for the song."),
+                              tags$li("Energy: The higher the value, the 
+                                      more energtic. song."),
+                              tags$li("Liveness: The higher the value, the more 
+                                      likely the song is a live recording."),
+                              tags$li("Acousticness: The higher the value the 
+                                      more acoustic the song is."),
+                              tags$hr()),
+                     
                      selectInput("yaxis",
-                                 "Please select the factor of y-axis",
+                                 "Please select a factor: ",
                                  choices = c("Danceability", "Valence",
-                                             "Energy", "Popularity",
-                                             "Liveness", "Acousticness"))
+                                             "Energy","Liveness", 
+                                             "Acousticness"))
                    ),
                    mainPanel(
                      plotlyOutput(outputId = "popularityPlot")
@@ -29,16 +46,24 @@ map1 <- tabPanel("Popularity of a song",
                  )
 )
 
+# extract singers' names
+nameSinger <- unique(as.character(top2019[, "Artist.Name"]))
+
 map2 <- tabPanel("Singer Battle",
                  sidebarLayout(
                    sidebarPanel(
-                     textInput(inputId = "singer1",
-                               label = "Please enter singer one:"),
-                     textInput(inputId = "singer2",
-                               label = "Please enter singer two:")
+                     selectInput("singer1",
+                                 "Please select singer one: ",
+                                 choices = c(nameSinger)),
+                     selectInput("singer2",
+                                 "Please select singer two: ",
+                                 choices = c(nameSinger))
                    ),
                    mainPanel(
-                     plotlyOutput(outputId = "singerBattle")
+                     plotlyOutput(outputId = "singerOutput"),
+                     tags$hr(),
+                     textOutput(outputId = "singer1Average"),
+                     textOutput(outputId = "singer2Average")
                    )
                  ))
 
