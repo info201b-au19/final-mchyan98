@@ -3,7 +3,9 @@
 introduction <- tabPanel("Project Overview",
                          tags$div(class = "overview", checked = NA,
                                   tags$h1("Project Overview"),
-                                  tags$h2("Top 50 Spotify Data"),
+                                  tags$h3("Top 50 Spotify Data"),
+                                  tags$img(src = "spotifytop50.jpg", width = "300px"),
+                                  tags$br(),
                                   tags$br(),
                                   tags$p("For our project, we used the top50.csv data set
                                           which shows the Top 50 most listened to songs on Spotify.
@@ -32,14 +34,14 @@ introduction <- tabPanel("Project Overview",
                                           valence, energy, liveness, and acousticness, and letting the user
                                           choose a factor to see its affect on the popularity of songs in
                                           the Top 50 data."),
-                                  tags$li("2. We are letting the user choose two singers who have songs in
-                                          the Top 50 data and a bar chart will indicate which singer
-                                          is more popular."),
+                                  tags$li("2. We are inputting data of the singers in the Top 50 list
+                                          and letting the user choose two singers to compare
+                                          and a bar chart will indicate which singer is more popular."),
                                   tags$li("3. We are taking in data of factors such as energy, loudness,
-                                          and beats per minute and it shows what factors make a song happy or sad.")
+                                          and beats per minute to show how the factors make a song 
+                                          happy or sad."),
+                                  tags$br()
                                   )
-  # what question are we answering?
-  # add some images
 )
 
 # map1: explore what factors affect the popularity of a song
