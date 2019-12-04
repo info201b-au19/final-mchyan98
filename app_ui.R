@@ -104,5 +104,6 @@ ui <- navbarPage(
   map1,
   map2,
   map3,
-  takeaways
+  takeaways,
+  theme = "styles.css"
 )
