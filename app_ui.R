@@ -69,6 +69,30 @@ map2 <- tabPanel("Singer Battle",
                    )
                  ))
 
+
+map3 <- tabPanel("What Makes Songs a Mood",
+                 sidebarLayout(
+                   sidebarPanel(
+                     radioButtons("category", "Choose a category to see what affects Valence of a song",
+                                  c("Energy",
+                                    "Loudness",
+                                    "Beats Per Minute")),
+                     sliderInput(
+                       inputId = "max",           # key this value will be assigned to
+                       label = "Please set max value of category", # label to display alongside the slider
+                       min = 0,                  # minimum slider value
+                       max = 95,                  # maximum slider value
+                       value = c(50)                 # starting value for the slider
+                     )
+                   ),
+
+                   mainPanel(
+                     plotlyOutput(outputId = "filterplot")
+                   )
+            )
+)
+
+
 takeaways <- tabPanel("Takeaways",
                          h1("3 Major Takeaways"),
                          h3("...")
@@ -79,6 +103,6 @@ ui <- navbarPage(
   introduction,
   map1,
   map2,
-  # map3
+  map3,
   takeaways
 )

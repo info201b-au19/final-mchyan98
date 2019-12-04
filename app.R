@@ -6,7 +6,7 @@ library("hexbin")
 library("leaflet")
 library("dplyr")
 
-# Source to ui and server
+# Source in ui and server
 source("app_ui.R")
 source("app_server.R")
 

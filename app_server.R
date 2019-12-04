@@ -1,10 +1,10 @@
 # Load dataset
 top2019 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
 
-server <- function(inputs, outputs) {
+server <- function(input, output) {
   # map1 output
-  outputs$popularityPlot <- renderPlotly({
-    y_factor <- inputs$yaxis
+  output$popularityPlot <- renderPlotly({
+    y_factor <- input$yaxis
     y_factor_edit <- y_factor 
     if (y_factor == "Valence") {
       y_factor_edit <- paste0(y_factor, ".")
@@ -30,9 +30,9 @@ server <- function(inputs, outputs) {
   })
   
   # map2 output
-  outputs$singerOutput <- renderPlotly({
-    singerName1 <- inputs$singer1
-    singerName2 <- inputs$singer2
+  output$singerOutput <- renderPlotly({
+    singerName1 <- input$singer1
+    singerName2 <- input$singer2
     dataFilter1 <- dataEdit(top2019, singerName1)
     dataFilter2 <- dataEdit(top2019, singerName2)
     song1 <- songpl(dataFilter1, "song")
@@ -45,8 +45,8 @@ server <- function(inputs, outputs) {
   })
  
   # count average popularity of the singer' all songs
-  outputs$singer1Average <- renderText({
-    singerName <- inputs$singer1
+  output$singer1Average <- renderText({
+    singerName <- input$singer1
     dataFilter <- dataEdit(top2019, singerName)
     song <- songpl(dataFilter, "song")
     avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
@@ -54,15 +54,15 @@ server <- function(inputs, outputs) {
                        "is ", avg)
   })
   
-  outputs$singer2Average <- renderText({
-    singerName <- inputs$singer2
+  output$singer2Average <- renderText({
+    singerName <- input$singer2
     dataFilter <- dataEdit(top2019, singerName)
     song <- songpl(dataFilter, "song")
     avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
     avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
                       "is ", avg)
   })
-}
+
 
 # filter out the singer's songs
 dataEdit <- function(df, name1) {
@@ -101,4 +101,48 @@ plotBar <- function (df, name, song, col) {
            yaxis = list(title = "Track Name"),
            autosize = F, width = 600, height = 600,
            annotations = anno)
+}
+
+
+
+# map3 output
+# Question: What makes a song sad or happy?
+
+output$filterplot <- renderPlotly({
+category <- input$category
+  
+top2019$Loudness..dB.. <- top2019$Loudness..dB.. + 6
+  new1 <- top2019 %>%
+    filter(Valence. <= input$max)
+  
+  
+  if (category == "Energy") {
+    new1 <- new1 %>%
+      select(Valence., Energy)
+    y <- new1$Energy
+  } else if (category == "Loudness") {
+    new1 <- new1 %>%
+      select(Valence., Loudness..dB..)
+    y <- new1$Loudness..dB..
+  } else { # category == "BPM"
+    new1 <- new1 %>%
+      select(Valence., Beats.Per.Minute)
+    y <- new1$Beats.Per.Minute
+  }
+
+  x <- new1$Valence.
+  
+  plot_ly(data = new1, x = x, y = y) %>%
+    add_markers(y = y, text = new1$Track.Name, showlegend = FALSE) %>%
+    add_lines(y = ~fitted(loess(y ~ x)),
+              line = list(color = '#07A4B5'),
+              name = "Line of Best Fit", showlegend = TRUE) %>%
+    layout(
+      title = "Valence Relationships",
+      xaxis = list(title = "Valence"),
+      yaxis = list(title = paste(category))
+    )
+  
+})
+
 }
