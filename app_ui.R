@@ -28,14 +28,14 @@ introduction <- tabPanel("Project Overview",
                                   tags$li("What determines the mood of a song?"),
                                   tags$br(),
                                   tags$h3("The data that we are using to answer these questions are:"),
-                                  tags$li("1. We are taking in data of different factors (danceability,
+                                  tags$li("We are taking in data of different factors (danceability,
                                           valence, energy, liveness, and acousticness) and letting the user
                                           choose a factor to see its affect on the popularity of songs in
                                           the Top 50 data."),
-                                  tags$li("2. We are inputting data of the singers in the Top 50 list
+                                  tags$li("We are inputting data of the singers in the Top 50 list
                                           and letting the user choose two singers to compare
                                           and a bar chart will indicate which singer is more popular."),
-                                  tags$li("3. We are taking in data of factors (energy, loudness,
+                                  tags$li("We are taking in data of factors (energy, loudness,
                                           and beats per minute) to show how the factors make a song 
                                           happy or sad."),
                                   tags$br(),
@@ -171,8 +171,9 @@ takeaways <- tabPanel("Takeaways",
                                       of energy, danceability, valence, liveness, 
                                       and acousticness that each had."),
                               tags$li("From our singer battle, we concluded that Bad Bunny
-                                      had the most popular song of 2019 and was overall
-                                      the most popular artist of 2019 according to our data."),
+                                      was the most popular artist of 2019 on average. However, she
+                                      did not have the single most popular song. The single most
+                                      popular song was bad guy by Billie Eilish."),
                               tags$li("There is also a trend with the valence of a song and
                                       it's energy, meaning that songs that were typically
                                       sadder tend to have less energy associated with them."),
