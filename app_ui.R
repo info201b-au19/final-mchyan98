@@ -1,9 +1,43 @@
 # app_ui
 
 introduction <- tabPanel("Project Overview",
-                         h1("Project Overview"),
-                         h2("Top 50 Spotify Data"),
-                         h3("...")
+                         tags$div(class = "overview", checked = NA,
+                                  tags$h1("Project Overview"),
+                                  tags$h2("Top 50 Spotify Data"),
+                                  tags$br(),
+                                  tags$p("For our project, we used the top50.csv data set
+                                          which shows the Top 50 most listened to songs on Spotify.
+                                          The data takes into account 13 different variables
+                                          about the songs (such as genre, year, beats per minute, etc.),
+                                          and the variables were all extracted from Spotify's
+                                          Organize Your Music function. This data was last
+                                          updated on August 8, 2019, and the #1 song as of that date
+                                          was Senorita by Shawn Mendes. Music is a big part
+                                          of people's daily lives and we chose to analyze this dataset
+                                          because we are interested in how it changes people's lives.
+                                          We are also interested in if there is a relationship
+                                          between people’s interest, nationality, habits, etc. and the
+                                          type of songs they like to listen. Other than that, it is
+                                          intriguing to learn about why certain songs are more
+                                          popular than others and how certain platforms create playlists
+                                          based on the data they have."),
+                                  tags$br(),
+                                  tags$h3("Some major questions we are seeking to answer are:"),
+                                  tags$li("What factors affect the popularity of a song?"),
+                                  tags$li("How do we compare the popularity of two singers in the Top 50 list?"),
+                                  tags$li("What determines the mood of a song?"),
+                                  tags$br(),
+                                  tags$h3("The data that we are using to answer these questions are:"),
+                                  tags$li("1. We are taking in data of different factors such as danceability,
+                                          valence, energy, liveness, and acousticness, and letting the user
+                                          choose a factor to see its affect on the popularity of songs in
+                                          the Top 50 data."),
+                                  tags$li("2. We are letting the user choose two singers who have songs in
+                                          the Top 50 data and a bar chart will indicate which singer
+                                          is more popular."),
+                                  tags$li("3. We are taking in data of factors such as energy, loudness,
+                                          and beats per minute and it shows what factors make a song happy or sad.")
+                                  )
   # what question are we answering?
   # add some images
 )
@@ -93,7 +127,7 @@ map3 <- tabPanel("What Makes Songs a Mood",
                                      positive mood for the song. In this
                                      section, the users can find out what
                                      determines the mood of a song. Also,
-                                     the uers can choose a maximum value of
+                                     the users can choose a maximum value of
                                      the chosen category."),
                               tags$br(),
                               tags$p("The three categories are: "),
@@ -139,8 +173,7 @@ takeaways <- tabPanel("Takeaways",
                               tags$li("There is also a trend with the valence of a song and
                                       it's energy, meaning that songs that were typically
                                       sadder tend to have less energy associated with them."),
-                              tags$img(src = "energytrend.png", width = "600px"),
-                              tags$hr())
+                              tags$img(src = "energytrend.png", width = "600px"))
 )
 
 ui <- navbarPage(
