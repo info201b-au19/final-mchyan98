@@ -101,7 +101,7 @@ map2 <- tabPanel("Singer Battle",
                                      singer's songs and tell the winner."),
                               tags$p(
                               tags$small("* The singers
-                                     are from 2019 spotify top 50 popular
+                                     are from 2019 Spotify's Top 50 popular
                                      songs.")),
                               tags$hr()),
                      selectInput("singer1",
