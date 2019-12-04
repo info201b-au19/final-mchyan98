@@ -147,11 +147,11 @@ map3 <- tabPanel("What Makes Songs a Mood",
                                     "Loudness",
                                     "Beats Per Minute")),
                      sliderInput(
-                       inputId = "max",           # key this value will be assigned to
-                       label = "Please set max value of category", # label to display alongside the slider
-                       min = 0,                  # minimum slider value
-                       max = 100,                  # maximum slider value
-                       value = c(50)                 # starting value for the slider
+                       inputId = "max", 
+                       label = "Please set max value of category", 
+                       min = 0,
+                       max = 100,
+                       value = c(50)
                      )
                    ),
 
