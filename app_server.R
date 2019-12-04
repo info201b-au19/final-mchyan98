@@ -46,38 +46,57 @@ server <- function(inputs, outputs) {
  
   # count average popularity of the singer' all songs
   outputs$singer1Average <- renderText({
-    singerName <- inputs$singer1
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                       "is ", avg)
+    singerName1 <- inputs$singer1
+    dataFilter1 <- dataEdit(top2019, singerName1)
+    song1 <- songpl(dataFilter1, "song")
+    avg1 <- average(dataFilter1) 
+    avgInfo1 <- paste0("Average popularity of ", singerName1, "'s ", song1,
+                       "is ", avg1, ".")
   })
   
   outputs$singer2Average <- renderText({
-    singerName <- inputs$singer2
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                      "is ", avg)
+    singerName2 <- inputs$singer2
+    dataFilter2 <- dataEdit(top2019, singerName2)
+    song2 <- songpl(dataFilter2, "song")
+    avg2 <- average(dataFilter2)
+    avgInfo2 <- paste0("Average popularity of ", singerName2, "'s ", song2,
+                       "is ", avg2, ".")
+  })
+  
+  outputs$singerWinner <- renderText({
+    singerName1 <- inputs$singer1
+    singerName2 <- inputs$singer2
+    dataFilter1 <- dataEdit(top2019, singerName1)
+    dataFilter2 <- dataEdit(top2019, singerName2)
+    song1 <- songpl(dataFilter1, "song")
+    song2 <- songpl(dataFilter2, "song")
+    avg1 <- average(dataFilter1) 
+    avg2 <- average(dataFilter2)
+    winner <- ""
+    if (avg1 > avg2) {
+      winner <- paste0(singerName1, " wins!")
+    } else if (avg1 < avg2) {
+      winner <- paste0(singerName2, " wins!")
+    } else {
+      winner <- paste("They tie.")
+    }
   })
 }
 
-# filter out the singer's songs
+# Filters out the singer's songs
 dataEdit <- function(df, name1) {
   dataSet <- top2019 %>% 
     filter(Artist.Name == name1)
 }
 
-# adding 's' in the case when singer has more than one songs
+# Adds 's' in the case when singer has more than one songs
 songpl <- function(df, song) {
   if (nrow(df) > 1) {
     song <- "songs"
   }
 }
 
-# plot bar chart
+# Plots bar chart
 plotBar <- function (df, name, song, col) {
   anno <- list(text = paste0(name, "'s ", song),
                xref = "paper",
@@ -95,10 +114,18 @@ plotBar <- function (df, name, song, col) {
               type = "bar",
               width = 0.2,
               orientation = "h",
-              marker = list(color = col)
+              marker = list(color = col),
+              text = paste0("Track name: ", df[["Track.Name"]], "<br />",
+                            "Popularity: ", df[["Popularity"]]),
+              hoverinfo = "text"
     ) %>% 
     layout(xaxis = list(range = c(0, 100)),
            yaxis = list(title = "Track Name"),
            autosize = F, width = 600, height = 600,
            annotations = anno)
+}
+
+# Calculates average popularity of singer's song(s)
+average <- function(df) {
+  avg <- sum(df[, "Popularity"])/nrow(df)  
 }

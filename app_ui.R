@@ -50,10 +50,22 @@ map1 <- tabPanel("Popularity of a Song",
 
 # extract singers' names
 nameSinger <- unique(as.character(top2019[, "Artist.Name"]))
+removeRosal <- "ROSAL\315A" 
+nameSinger <- nameSinger[!(nameSinger %in% removeRosal)]
 
 map2 <- tabPanel("Singer Battle",
                  sidebarLayout(
                    sidebarPanel(
+                     tags$div(class = "commet", checked = NA,
+                              tags$p("These two bar charts show the 
+                                     popularity of given singer's songs. The
+                                     users can choose two singers and it will
+                                     calculate the average popularity of
+                                     singer's songs and tell the winner."),
+                              tags$p(
+                              tags$small("* The singers
+                                     are from 2019 spotify top 50 popular
+                                     songs."))),
                      selectInput("singer1",
                                  "Please select singer one: ",
                                  choices = c(nameSinger)),
@@ -63,9 +75,10 @@ map2 <- tabPanel("Singer Battle",
                    ),
                    mainPanel(
                      plotlyOutput(outputId = "singerOutput"),
-                     tags$hr(),
+                     tags$br(style = "line-height:200px;"),
                      textOutput(outputId = "singer1Average"),
-                     textOutput(outputId = "singer2Average")
+                     textOutput(outputId = "singer2Average"),
+                     textOutput(outputId = "singerWinner")
                    )
                  ))
 
@@ -75,6 +88,7 @@ takeaways <- tabPanel("Takeaways",
 )
 
 ui <- navbarPage(
+  theme = shinytheme("flatly"),
   "App Title",
   introduction,
   map1,
