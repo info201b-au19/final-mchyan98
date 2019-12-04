@@ -134,10 +134,12 @@ takeaways <- tabPanel("Takeaways",
                                       of energy, danceability, valence, liveness, 
                                       and acousticness that each had."),
                               tags$li("From our singer battle, we concluded that Bad Bunny
-                                      had the most popular song of 2019."),
+                                      had the most popular song of 2019 and was overall
+                                      the most popular artist of 2019 according to our data."),
                               tags$li("There is also a trend with the valence of a song and
                                       it's energy, meaning that songs that were typically
                                       sadder tend to have less energy associated with them."),
+                              tags$img(src = "energytrend.png", width = "600px"),
                               tags$hr())
 )
 
