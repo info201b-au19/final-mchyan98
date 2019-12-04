@@ -21,7 +21,7 @@ server <- function(input, output) {
                                 "<br />", y_factor, ": ",
                                 top2019[[y_factor_edit]]),
                  hoverinfo = "text",
-                 marker = list(size = 5)) %>% 
+                 marker = list(size = 5, color = "rgb(20,172,100)")) %>% 
       layout(title = paste0("Popularity vs. ", y_factor),
              xaxis = list(zeroline = FALSE,
                           title = "Popularity"),
@@ -37,15 +37,15 @@ server <- function(input, output) {
     dataFilter2 <- dataEdit(top2019, singerName2)
     song1 <- songpl(dataFilter1, "song")
     song2 <- songpl(dataFilter2, "song")
-    color1 <- "rgb(158,202,225)"
-    color2 <- "rgb(58,200,225)"
+    color1 <- "rgb(20,172,100)"
+    color2 <- "rgb(25,27,26)"
     p1 <- plotBar(dataFilter1, singerName1, song1, color1)
     p2 <- plotBar(dataFilter2, singerName2, song2, color2)
     subplot(p1, p2, nrows = 2, margin = 0.05) %>% hide_legend()
   })
 
-  outputs$singer1Average <- renderText({
-    singerName1 <- inputs$singer1
+  output$singer1Average <- renderText({
+    singerName1 <- input$singer1
     dataFilter1 <- dataEdit(top2019, singerName1)
     song1 <- songpl(dataFilter1, "song")
     avg1 <- average(dataFilter1) 
@@ -53,8 +53,8 @@ server <- function(input, output) {
                        "is ", avg1, ".")
   })
   
-  outputs$singer2Average <- renderText({
-    singerName2 <- inputs$singer2
+  output$singer2Average <- renderText({
+    singerName2 <- input$singer2
     dataFilter2 <- dataEdit(top2019, singerName2)
     song2 <- songpl(dataFilter2, "song")
     avg2 <- average(dataFilter2)
@@ -62,9 +62,9 @@ server <- function(input, output) {
                        "is ", avg2, ".")
   })
   
-  outputs$singerWinner <- renderText({
-    singerName1 <- inputs$singer1
-    singerName2 <- inputs$singer2
+  output$singerWinner <- renderText({
+    singerName1 <- input$singer1
+    singerName2 <- input$singer2
     dataFilter1 <- dataEdit(top2019, singerName1)
     dataFilter2 <- dataEdit(top2019, singerName2)
     song1 <- songpl(dataFilter1, "song")
@@ -159,9 +159,10 @@ top2019$Loudness..dB.. <- top2019$Loudness..dB.. + 6
   x <- new1$Valence.
   
   plot_ly(data = new1, x = x, y = y) %>%
-    add_markers(y = y, text = new1$Track.Name, showlegend = FALSE) %>%
+    add_markers(y = y, text = new1$Track.Name, showlegend = FALSE,
+                marker = list(color = "rgb(20,172,100)")) %>%
     add_lines(y = ~fitted(loess(y ~ x)),
-              line = list(color = '#07A4B5'),
+              line = list(color = "rgb(25,27,26)"),
               name = "Line of Best Fit", showlegend = TRUE) %>%
     layout(
       title = "Valence Relationships",
