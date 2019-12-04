@@ -14,7 +14,7 @@ introduction <- tabPanel("Project Overview",
 map1 <- tabPanel("Popularity of a Song",
                  sidebarLayout(
                    sidebarPanel(
-                     tags$div(class = "commet", checked = NA,
+                     tags$div(class = "map1", checked = NA,
                               tags$p("This chart intends to find out how
                                      different factors will affect the 
                                      popularity of a song. The users can
@@ -82,6 +82,30 @@ map2 <- tabPanel("Singer Battle",
                    )
                  ))
 
+
+map3 <- tabPanel("What Makes Songs a Mood",
+                 sidebarLayout(
+                   sidebarPanel(
+                     radioButtons("category", "Choose a category to see what affects Valence of a song",
+                                  c("Energy",
+                                    "Loudness",
+                                    "Beats Per Minute")),
+                     sliderInput(
+                       inputId = "max",           # key this value will be assigned to
+                       label = "Please set max value of category", # label to display alongside the slider
+                       min = 0,                  # minimum slider value
+                       max = 100,                  # maximum slider value
+                       value = c(50)                 # starting value for the slider
+                     )
+                   ),
+
+                   mainPanel(
+                     plotlyOutput(outputId = "filterplot")
+                   )
+            )
+)
+
+
 takeaways <- tabPanel("Takeaways",
                          h1("3 Major Takeaways"),
                          h3("...")
@@ -93,6 +117,7 @@ ui <- navbarPage(
   introduction,
   map1,
   map2,
-  # map3
-  takeaways
+  map3,
+  takeaways,
+  theme = "styles.css"
 )
