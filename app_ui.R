@@ -40,7 +40,8 @@ introduction <- tabPanel("Project Overview",
                                   tags$li("3. We are taking in data of factors such as energy, loudness,
                                           and beats per minute to show how the factors make a song 
                                           happy or sad."),
-                                  tags$br()
+                                  tags$br(),
+                                  tags$img(src = "spotifyalbum.png", width = "700px"),
                                   )
 )
 
