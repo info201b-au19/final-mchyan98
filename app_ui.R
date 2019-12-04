@@ -144,7 +144,6 @@ takeaways <- tabPanel("Takeaways",
 )
 
 ui <- navbarPage(
-  # theme = shinytheme("flatly"),
   "App Title",
   introduction,
   map1,
