@@ -12,6 +12,6 @@ li, p {
   color: rgb(10,149,83);
 }
 
-div.map1 > li  {
+div.map1 > li, div.takeaways > li  {
   padding-bottom: 4px;
 }
