@@ -43,9 +43,7 @@ server <- function(input, output) {
     p2 <- plotBar(dataFilter2, singerName2, song2, color2)
     subplot(p1, p2, nrows = 2, margin = 0.05) %>% hide_legend()
   })
- 
-  # count average popularity of the singer' all songs
-<<<<<<< HEAD
+
   outputs$singer1Average <- renderText({
     singerName1 <- inputs$singer1
     dataFilter1 <- dataEdit(top2019, singerName1)
@@ -53,26 +51,8 @@ server <- function(input, output) {
     avg1 <- average(dataFilter1) 
     avgInfo1 <- paste0("Average popularity of ", singerName1, "'s ", song1,
                        "is ", avg1, ".")
-||||||| merged common ancestors
-  outputs$singer1Average <- renderText({
-    singerName <- inputs$singer1
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                       "is ", avg)
-=======
-  output$singer1Average <- renderText({
-    singerName <- input$singer1
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                       "is ", avg)
->>>>>>> 9e426e714bdaeb009442258de9590a5a23804483
   })
   
-<<<<<<< HEAD
   outputs$singer2Average <- renderText({
     singerName2 <- inputs$singer2
     dataFilter2 <- dataEdit(top2019, singerName2)
@@ -99,23 +79,6 @@ server <- function(input, output) {
     } else {
       winner <- paste("They tie.")
     }
-||||||| merged common ancestors
-  outputs$singer2Average <- renderText({
-    singerName <- inputs$singer2
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                      "is ", avg)
-=======
-  output$singer2Average <- renderText({
-    singerName <- input$singer2
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                      "is ", avg)
->>>>>>> 9e426e714bdaeb009442258de9590a5a23804483
   })
 
 
@@ -159,16 +122,11 @@ plotBar <- function (df, name, song, col) {
            yaxis = list(title = "Track Name"),
            autosize = F, width = 600, height = 600,
            annotations = anno)
-<<<<<<< HEAD
 }
 
 # Calculates average popularity of singer's song(s)
 average <- function(df) {
   avg <- sum(df[, "Popularity"])/nrow(df)  
-}
-||||||| merged common ancestors
-}
-=======
 }
 
 
@@ -213,4 +171,3 @@ top2019$Loudness..dB.. <- top2019$Loudness..dB.. + 6
   
 })
 }
->>>>>>> 9e426e714bdaeb009442258de9590a5a23804483
