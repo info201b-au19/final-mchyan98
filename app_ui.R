@@ -16,7 +16,7 @@ introduction <- tabPanel("Project Overview",
                                           of people's daily lives and we chose to analyze this dataset
                                           because we are interested in how it changes people's lives.
                                           We are also interested in if there is a relationship
-                                          between people’s interest, nationality, habits, etc. and the
+                                          between peoples's interests, nationality, habits, etc. and the
                                           type of songs they like to listen. Other than that, it is
                                           intriguing to learn about why certain songs are more
                                           popular than others and how certain platforms create playlists
@@ -28,14 +28,14 @@ introduction <- tabPanel("Project Overview",
                                   tags$li("What determines the mood of a song?"),
                                   tags$br(),
                                   tags$h3("The data that we are using to answer these questions are:"),
-                                  tags$li("1. We are taking in data of different factors such as danceability,
+                                  tags$li("We are taking in data of different factors such as danceability,
                                           valence, energy, liveness, and acousticness, and letting the user
                                           choose a factor to see its affect on the popularity of songs in
                                           the Top 50 data."),
-                                  tags$li("2. We are letting the user choose two singers who have songs in
+                                  tags$li("We are letting the user choose two singers who have songs in
                                           the Top 50 data and a bar chart will indicate which singer
                                           is more popular."),
-                                  tags$li("3. We are taking in data of factors such as energy, loudness,
+                                  tags$li("We are taking in data of factors such as energy, loudness,
                                           and beats per minute and it shows what factors make a song happy or sad.")
                                   )
   # what question are we answering?
@@ -144,11 +144,11 @@ map3 <- tabPanel("What Makes Songs a Mood",
                                     "Loudness",
                                     "Beats Per Minute")),
                      sliderInput(
-                       inputId = "max",           # key this value will be assigned to
-                       label = "Please set max value of category", # label to display alongside the slider
-                       min = 0,                  # minimum slider value
-                       max = 100,                  # maximum slider value
-                       value = c(50)                 # starting value for the slider
+                       inputId = "max", 
+                       label = "Please set max value of category", 
+                       min = 0,
+                       max = 100,
+                       value = c(50)
                      )
                    ),
 

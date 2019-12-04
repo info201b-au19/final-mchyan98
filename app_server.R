@@ -1,8 +1,6 @@
 # Load dataset
-top2019 <- read.csv("data/top50.csv",
-                    fileEncoding="latin1",
-                    encoding="UTF-8",
-                    stringsAsFactors = FALSE)
+top2019 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+
 
 server <- function(input, output) {
   # map1 output
@@ -53,7 +51,7 @@ server <- function(input, output) {
     song1 <- songpl(dataFilter1, "song")
     avg1 <- average(dataFilter1) 
     avgInfo1 <- paste0("Average popularity of ", singerName1, "'s ", song1,
-                       "is ", avg1, ".")
+                       " is ", avg1, ".")
   })
   
   output$singer2Average <- renderText({
@@ -62,7 +60,7 @@ server <- function(input, output) {
     song2 <- songpl(dataFilter2, "song")
     avg2 <- average(dataFilter2)
     avgInfo2 <- paste0("Average popularity of ", singerName2, "'s ", song2,
-                       "is ", avg2, ".")
+                       " is ", avg2, ".")
   })
   
   output$singerWinner <- renderText({
