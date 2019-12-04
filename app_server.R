@@ -1,5 +1,8 @@
 # Load dataset
-top2019 <- read.csv("data/top50.csv", stringsAsFactors = FALSE)
+top2019 <- read.csv("data/top50.csv",
+                    fileEncoding="latin1",
+                    encoding="UTF-8",
+                    stringsAsFactors = FALSE)
 
 server <- function(input, output) {
   # map1 output

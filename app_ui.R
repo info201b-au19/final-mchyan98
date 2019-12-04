@@ -94,8 +94,17 @@ map3 <- tabPanel("What Makes Songs a Mood",
 
 
 takeaways <- tabPanel("Takeaways",
-                         h1("3 Major Takeaways"),
-                         h3("...")
+                      tags$div(class = "takeaway", checked = NA,
+                              tags$h1("Main Takeaways"),
+                              tags$br(),
+                              tags$li("There is no formula to getting a popular song.
+                                      Songs that were popular varied a lot in the amount 
+                                      of energy, danceability, valence, liveness, 
+                                      and acousticness that each had."),
+                              tags$li("There is also a trend with the valence of a song and
+                                      it's energy, meaning that songs that were typically
+                                      sadder tend to have less energy associated with them."),
+                              tags$hr())
 )
 
 ui <- navbarPage(
