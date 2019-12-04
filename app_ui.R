@@ -1,5 +1,11 @@
 # app_ui
 
+# Load dataset
+top2019 <- read.csv("data/top50.csv",
+                    fileEncoding="latin1",	
+                    encoding="UTF-8",
+                    stringsAsFactors = FALSE)
+
 introduction <- tabPanel("Project Overview",
                          tags$div(class = "overview", checked = NA,
                                   tags$h1("Project Overview"),
@@ -180,7 +186,7 @@ takeaways <- tabPanel("Takeaways",
 )
 
 ui <- navbarPage(
-  "App Title",
+  "Spotify 2019 Top 50 Data",
   introduction,
   map1,
   map2,
