@@ -14,7 +14,7 @@ introduction <- tabPanel("Project Overview",
 map1 <- tabPanel("Popularity of a Song",
                  sidebarLayout(
                    sidebarPanel(
-                     tags$div(class = "commet", checked = NA,
+                     tags$div(class = "map1", checked = NA,
                               tags$p("This chart intends to find out how
                                      different factors will affect the 
                                      popularity of a song. The users can
