@@ -16,11 +16,9 @@ introduction <- tabPanel("Project Overview",
                                           updated on August 8, 2019, and the #1 song as of that date
                                           was Senorita by Shawn Mendes. Music is a big part
                                           of people's daily lives and we chose to analyze this dataset
-                                          because we are interested in how it changes people's lives.
-                                          We are also interested in if there is a relationship
-                                          between people’s interest, nationality, habits, etc. and the
-                                          type of songs they like to listen. Other than that, it is
-                                          intriguing to learn about why certain songs are more
+                                          because we are interested in how it changes people's lives, and
+                                          what specific factors affect the popularity of the songs.
+                                          It was intriguing to learn about why certain songs are more
                                           popular than others and how certain platforms create playlists
                                           based on the data they have."),
                                   tags$br(),
@@ -30,18 +28,20 @@ introduction <- tabPanel("Project Overview",
                                   tags$li("What determines the mood of a song?"),
                                   tags$br(),
                                   tags$h3("The data that we are using to answer these questions are:"),
-                                  tags$li("1. We are taking in data of different factors such as danceability,
-                                          valence, energy, liveness, and acousticness, and letting the user
+                                  tags$li("1. We are taking in data of different factors (danceability,
+                                          valence, energy, liveness, and acousticness) and letting the user
                                           choose a factor to see its affect on the popularity of songs in
                                           the Top 50 data."),
                                   tags$li("2. We are inputting data of the singers in the Top 50 list
                                           and letting the user choose two singers to compare
                                           and a bar chart will indicate which singer is more popular."),
-                                  tags$li("3. We are taking in data of factors such as energy, loudness,
-                                          and beats per minute to show how the factors make a song 
+                                  tags$li("3. We are taking in data of factors (energy, loudness,
+                                          and beats per minute) to show how the factors make a song 
                                           happy or sad."),
                                   tags$br(),
                                   tags$img(src = "spotifyalbum.png", width = "700px"),
+                                  tags$br(),
+                                  tags$br()
                                   )
 )
 
