@@ -24,7 +24,7 @@ server <- function(input, output) {
                                 "<br />", y_factor, ": ",
                                 top2019[[y_factor_edit]]),
                  hoverinfo = "text",
-                 marker = list(size = 5)) %>% 
+                 marker = list(size = 5, color = "rgb(20,172,100)")) %>% 
       layout(title = paste0("Popularity vs. ", y_factor),
              xaxis = list(zeroline = FALSE,
                           title = "Popularity"),
@@ -40,47 +40,65 @@ server <- function(input, output) {
     dataFilter2 <- dataEdit(top2019, singerName2)
     song1 <- songpl(dataFilter1, "song")
     song2 <- songpl(dataFilter2, "song")
-    color1 <- "rgb(158,202,225)"
-    color2 <- "rgb(58,200,225)"
+    color1 <- "rgb(20,172,100)"
+    color2 <- "rgb(25,27,26)"
     p1 <- plotBar(dataFilter1, singerName1, song1, color1)
     p2 <- plotBar(dataFilter2, singerName2, song2, color2)
     subplot(p1, p2, nrows = 2, margin = 0.05) %>% hide_legend()
   })
- 
-  # count average popularity of the singer' all songs
+
   output$singer1Average <- renderText({
-    singerName <- input$singer1
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                       "is ", avg)
+    singerName1 <- input$singer1
+    dataFilter1 <- dataEdit(top2019, singerName1)
+    song1 <- songpl(dataFilter1, "song")
+    avg1 <- average(dataFilter1) 
+    avgInfo1 <- paste0("Average popularity of ", singerName1, "'s ", song1,
+                       "is ", avg1, ".")
   })
   
   output$singer2Average <- renderText({
-    singerName <- input$singer2
-    dataFilter <- dataEdit(top2019, singerName)
-    song <- songpl(dataFilter, "song")
-    avg <- sum(dataFilter[, "Popularity"])/nrow(dataFilter)
-    avgInfo <- paste0("Average popularity of ", singerName, "'s ", song,
-                      "is ", avg)
+    singerName2 <- input$singer2
+    dataFilter2 <- dataEdit(top2019, singerName2)
+    song2 <- songpl(dataFilter2, "song")
+    avg2 <- average(dataFilter2)
+    avgInfo2 <- paste0("Average popularity of ", singerName2, "'s ", song2,
+                       "is ", avg2, ".")
+  })
+  
+  output$singerWinner <- renderText({
+    singerName1 <- input$singer1
+    singerName2 <- input$singer2
+    dataFilter1 <- dataEdit(top2019, singerName1)
+    dataFilter2 <- dataEdit(top2019, singerName2)
+    song1 <- songpl(dataFilter1, "song")
+    song2 <- songpl(dataFilter2, "song")
+    avg1 <- average(dataFilter1) 
+    avg2 <- average(dataFilter2)
+    winner <- ""
+    if (avg1 > avg2) {
+      winner <- paste0(singerName1, " wins!")
+    } else if (avg1 < avg2) {
+      winner <- paste0(singerName2, " wins!")
+    } else {
+      winner <- paste("They tie.")
+    }
   })
 
 
-# filter out the singer's songs
+# Filters out the singer's songs
 dataEdit <- function(df, name1) {
   dataSet <- top2019 %>% 
     filter(Artist.Name == name1)
 }
 
-# adding 's' in the case when singer has more than one songs
+# Adds 's' in the case when singer has more than one songs
 songpl <- function(df, song) {
   if (nrow(df) > 1) {
     song <- "songs"
   }
 }
 
-# plot bar chart
+# Plots bar chart
 plotBar <- function (df, name, song, col) {
   anno <- list(text = paste0(name, "'s ", song),
                xref = "paper",
@@ -98,12 +116,20 @@ plotBar <- function (df, name, song, col) {
               type = "bar",
               width = 0.2,
               orientation = "h",
-              marker = list(color = col)
+              marker = list(color = col),
+              text = paste0("Track name: ", df[["Track.Name"]], "<br />",
+                            "Popularity: ", df[["Popularity"]]),
+              hoverinfo = "text"
     ) %>% 
     layout(xaxis = list(range = c(0, 100)),
            yaxis = list(title = "Track Name"),
            autosize = F, width = 600, height = 600,
            annotations = anno)
+}
+
+# Calculates average popularity of singer's song(s)
+average <- function(df) {
+  avg <- sum(df[, "Popularity"])/nrow(df)  
 }
 
 
@@ -136,9 +162,10 @@ top2019$Loudness..dB.. <- top2019$Loudness..dB.. + 6
   x <- new1$Valence.
   
   plot_ly(data = new1, x = x, y = y) %>%
-    add_markers(y = y, text = new1$Track.Name, showlegend = FALSE) %>%
+    add_markers(y = y, text = new1$Track.Name, showlegend = FALSE,
+                marker = list(color = "rgb(20,172,100)")) %>%
     add_lines(y = ~fitted(loess(y ~ x)),
-              line = list(color = '#07A4B5'),
+              line = list(color = "rgb(25,27,26)"),
               name = "Line of Best Fit", showlegend = TRUE) %>%
     layout(
       title = "Valence Relationships",

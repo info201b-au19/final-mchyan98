@@ -50,10 +50,23 @@ map1 <- tabPanel("Popularity of a Song",
 
 # extract singers' names
 nameSinger <- unique(as.character(top2019[, "Artist.Name"]))
+removeRosal <- "ROSAL\315A" 
+nameSinger <- nameSinger[!(nameSinger %in% removeRosal)]
 
 map2 <- tabPanel("Singer Battle",
                  sidebarLayout(
                    sidebarPanel(
+                     tags$div(class = "commet", checked = NA,
+                              tags$p("These two bar charts show the 
+                                     popularity of given singer's songs. The
+                                     users can choose two singers and it will
+                                     calculate the average popularity of
+                                     singer's songs and tell the winner."),
+                              tags$p(
+                              tags$small("* The singers
+                                     are from 2019 spotify top 50 popular
+                                     songs.")),
+                              tags$hr()),
                      selectInput("singer1",
                                  "Please select singer one: ",
                                  choices = c(nameSinger)),
@@ -63,9 +76,10 @@ map2 <- tabPanel("Singer Battle",
                    ),
                    mainPanel(
                      plotlyOutput(outputId = "singerOutput"),
-                     tags$hr(),
+                     tags$br(style = "line-height:200px;"),
                      textOutput(outputId = "singer1Average"),
-                     textOutput(outputId = "singer2Average")
+                     textOutput(outputId = "singer2Average"),
+                     textOutput(outputId = "singerWinner")
                    )
                  ))
 
@@ -73,7 +87,25 @@ map2 <- tabPanel("Singer Battle",
 map3 <- tabPanel("What Makes Songs a Mood",
                  sidebarLayout(
                    sidebarPanel(
-                     radioButtons("category", "Choose a category to see what affects Valence of a song",
+                     tags$div(class = "commet", checked = NA,
+                              tags$p("Valence indicates the mood of a song,
+                                     the higher the valence value, the more
+                                     positive mood for the song. In this
+                                     section, the users can find out what
+                                     determines the mood of a song. Also,
+                                     the uers can choose a maximum value of
+                                     the chosen category."),
+                              tags$br(),
+                              tags$p("The three categories are: "),
+                              tags$li("Energy: The higher the value, the 
+                                      more energtic. song."),
+                              tags$li("Loudness: The higher the value, 
+                                      the louder the song."),
+                              tags$li("Beat per minute: The tempo of the 
+                                      song."),
+                              tags$hr()),
+                     radioButtons("category", "Choose a category to see what 
+                                  affects Valence of a song",
                                   c("Energy",
                                     "Loudness",
                                     "Beats Per Minute")),
@@ -108,6 +140,7 @@ takeaways <- tabPanel("Takeaways",
 )
 
 ui <- navbarPage(
+  # theme = shinytheme("flatly"),
   "App Title",
   introduction,
   map1,

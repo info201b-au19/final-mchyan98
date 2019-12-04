@@ -5,6 +5,7 @@ library("plotly")
 library("hexbin")
 library("leaflet")
 library("dplyr")
+library("shinythemes")
 
 # Source in ui and server
 source("app_ui.R")
