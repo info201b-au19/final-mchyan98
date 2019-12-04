@@ -3,7 +3,9 @@
 introduction <- tabPanel("Project Overview",
                          tags$div(class = "overview", checked = NA,
                                   tags$h1("Project Overview"),
-                                  tags$h2("Top 50 Spotify Data"),
+                                  tags$h3("Top 50 Spotify Data"),
+                                  tags$img(src = "spotifytop50.jpg", width = "300px"),
+                                  tags$br(),
                                   tags$br(),
                                   tags$p("For our project, we used the top50.csv data set
                                           which shows the Top 50 most listened to songs on Spotify.
@@ -36,10 +38,10 @@ introduction <- tabPanel("Project Overview",
                                           the Top 50 data and a bar chart will indicate which singer
                                           is more popular."),
                                   tags$li("We are taking in data of factors such as energy, loudness,
-                                          and beats per minute and it shows what factors make a song happy or sad.")
+                                          and beats per minute and it shows what factors make a song happy or sad."),
+                                  tags$br(),
+                                  tags$img(src = "spotifyalbum.png", width = "700px"),
                                   )
-  # what question are we answering?
-  # add some images
 )
 
 # map1: explore what factors affect the popularity of a song
